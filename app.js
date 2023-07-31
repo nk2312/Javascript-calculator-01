@@ -12,39 +12,47 @@ function writeToLog(operation,currentValue,result,desc){
     console.log(workLog);
 }
 
-function addFunction(){
+function calculate(operatorType){
     let val= +input.value;
-    let value=val+currentValue;
-    let desc=description(currentValue,val,'+');
-    writeToLog('ADD',currentValue,value,desc);
+    if(!val ){
+        return
+    }
+    let value;
+    let desc;
+    if(operatorType==='ADD'){
+        value=val+currentValue;
+        desc=description(currentValue,val,'+');
+    }
+    else if(operatorType==='SUB'){
+        value=val>currentValue?val-currentValue:currentValue-val;
+        desc=description(currentValue,val,'-');
+    }
+    else if(operatorType==='MUL'){
+        value=val*currentValue;
+        desc=description(currentValue,val,'*');
+    }
+    else if(operatorType==='DIV'){
+        value=currentValue/val;
+        desc=description(currentValue,val,'/');
+    }
+    writeToLog(operatorType,currentValue,value,desc);
     currentValue=value;
     output(value,desc);
 }
+
+function addFunction(){
+    calculate('ADD');
+}
 function subFunction(){
-    let val= +input.value;
-    let value=val>currentValue?val-currentValue:currentValue-val;
-    let desc=description(currentValue,val,'-');
-    writeToLog('SUB',currentValue,value,desc);
-    currentValue=value;
-    output(value,desc);
+    calculate('SUB');
 }
 
 function mulFunction(){
-    let val= +input.value;
-    let value=val*currentValue;
-    let desc=description(currentValue,val,'*');
-    writeToLog('MUL',currentValue,value,desc);
-    currentValue=value;
-    output(value,desc);
+    calculate('MUL');
 }
 
 function divFunction(){
-    let val= +input.value;
-    let value=currentValue/val;
-    let desc=description(currentValue,val,'/');
-    writeToLog('DIV',currentValue,value,desc);
-    currentValue=value;
-    output(value,desc);
+    calculate('DIV');
 }
 
 
