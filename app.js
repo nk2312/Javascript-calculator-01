@@ -40,26 +40,13 @@ function calculate(operatorType){
     output(value,desc);
 }
 
-function addFunction(){
-    calculate('ADD');
-}
-function subFunction(){
-    calculate('SUB');
-}
-
-function mulFunction(){
-    calculate('MUL');
-}
-
-function divFunction(){
-    calculate('DIV');
-}
 
 
 
-add.addEventListener('click',addFunction);
-sub.addEventListener('click',subFunction);
-mul.addEventListener('click',mulFunction);
-div.addEventListener('click',divFunction);
+
+add.addEventListener('click',calculate.bind(this,'ADD'));
+sub.addEventListener('click',calculate.bind(this,'SUB'));
+mul.addEventListener('click',calculate.bind(this,'MUL'));
+div.addEventListener('click',calculate.bind(this,'DIV'));
 
 

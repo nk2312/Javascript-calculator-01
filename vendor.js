@@ -17,3 +17,8 @@ function output(enteredValue,description)
     result.innerHTML=enteredValue;
     desc.innerHTML=description;
 }
+
+
+
+
+
